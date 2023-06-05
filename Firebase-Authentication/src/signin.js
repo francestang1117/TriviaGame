@@ -1,7 +1,8 @@
 import {React, useState} from "react";
 import { Link } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "./firebase";
+import { auth } from "./Firebase";
+import { GoogleSignin } from "./GoogleSignin";
 
 
 function Signin() {
@@ -15,6 +16,12 @@ function Signin() {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
+
+  const handleGoogleSignin = (e) => {
+    
+    GoogleSignin();
+  
+  }
 
   const handleSignin = () => {
    
@@ -50,6 +57,8 @@ function Signin() {
         </div>
 
         <button type="button" onClick={handleSignin}>Sign In</button>
+
+        <button type="button" onClick={handleGoogleSignin}>Google Signin</button>
       </form>
 
       <p>

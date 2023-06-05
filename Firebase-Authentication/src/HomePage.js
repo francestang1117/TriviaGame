@@ -7,7 +7,7 @@ function HomePage() {
             
             <div>
         <Link to="/signin">
-          <button>Sign in with Email</button>
+          <button>Sign in</button>
         </Link>
 
         <Link to="/signup">

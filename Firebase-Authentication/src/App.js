@@ -1,7 +1,7 @@
 import React from 'react';
 import HomePage from './HomePage';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Signin from './signin';
+import Signin from './Signin';
 import SignupPage from './Signup';
 import PasswordRecovery from './RecoverPassword';
 function App() {
