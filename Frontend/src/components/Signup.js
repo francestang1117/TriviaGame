@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import {auth, db} from './Firebase';
-import {collection, setDoc, doc} from 'firebase/firestore';
-import {createUserWithEmailAndPassword} from 'firebase/auth';
+import {Link, useNavigate} from 'react-router-dom';
 import {GoogleSignin} from './GoogleSignin';
+import axios from "axios";
 
 function SignupPage() {
     const [firstName, setFirstName] = useState('');
@@ -12,6 +10,7 @@ function SignupPage() {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleFirstNameChange = (e) => {
         setFirstName(e.target.value);
@@ -49,30 +48,29 @@ function SignupPage() {
             return;
         }
 
+        const data = {
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password
+        }
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(async (userCredentials) => {
-                const uid = userCredentials.user.uid;
-                const data = {
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email
-                }
-
-               setDoc(doc(db, 'users', uid),{
-                   ...data
-               }).then((result) => {
-                   window.alert("Successful!")
-               }).catch((error) => {
-                   window.alert(error);
-               })
-            })
-            .catch((error) => {
-                window.alert(error);
-            })
+        axios.post('http://localhost:3000/user/signup', {
+            ...data
+        }).then((result) => {
+            if (result.status === 200) {
+                window.alert("Successful");
+                navigate('/signup/security-questions', {state: {uid: result.data.userId}});
+            } else {
+                window.alert('Something went wrong!');
+            }
+        }).catch((error) => {
+                window.alert("Something went wrong!");
+                console.log(error);
+            });
     };
 
-    const handleGoogleSingup = (e) => {
+    const handleGoogleSignup = (e) => {
         GoogleSignin();
     }
 
@@ -108,7 +106,7 @@ function SignupPage() {
 
                 <button type="button" onClick={handleSignup}>Sign Up</button>
 
-                <button type='button' onClick={handleGoogleSingup}>Google Signup</button>
+                <button type='button' onClick={handleGoogleSignup}>Google Signup</button>
             </form>
 
             {error && <p>{error}</p>}
