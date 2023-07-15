@@ -3,14 +3,14 @@ const {getFirestore} = require('firebase/firestore');
 const { getAuth, GoogleAuthProvider  } = require('firebase/auth');
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCp1L_lxmJ0UF3QkeJkH04fEt535I6P-VY",
-    authDomain: "serverless-8dce3.firebaseapp.com",
-    projectId: "serverless-8dce3",
-    storageBucket: "serverless-8dce3.appspot.com",
-    messagingSenderId: "829993559820",
-    appId: "1:829993559820:web:73ee8279f585dca5a5cb29",
-    measurementId: "G-CWX3KZVDS8"
-};
+  apiKey: "AIzaSyB2ylpcs8AHxjB1a3M-QpSQ6IqQ9-WV_lg",
+  authDomain: "serverless-e0a48.firebaseapp.com",
+  projectId: "serverless-e0a48",
+  storageBucket: "serverless-e0a48.appspot.com",
+  messagingSenderId: "64948577651",
+  appId: "1:64948577651:web:c999b30a987c713d4ad106",
+  measurementId: "G-RW5LT1VS3H"
+}
 
 const app = firebase.initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();

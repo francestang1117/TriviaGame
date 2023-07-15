@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  Functions
+
+  Sample SAM Template for Functions
+  
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 10
+    MemorySize: 128
+
+Resources:
+  Signup:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Signup/
+      Handler: app.signupHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  Login:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Login/
+      Handler: app.loginHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  ResetPassword:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ResetPassword/
+      Handler: app.passwordHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  SignupSecurityQuestions:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: SignupSecurityQuestions/
+      Handler: app.signupSecurityHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  ValidateSecurityQuestions:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ValidateSecurityQuestions/
+      Handler: app.signinSecurityHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64

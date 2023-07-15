@@ -1,0 +1,62 @@
+  SignupFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: Signup/
+      Handler: app.lambdaHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+      Events:
+        HelloWorld:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /hello
+            Method: get
+
+                  Events:
+                    HelloWorld:
+                      Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+                      Properties:
+                        Path: /hello
+                        Method: get
+
+
+
+/*const {createUserWithEmailAndPassword} = require('firebase/auth');
+const {auth, db} = require ('./Firebase');
+const {collection, setDoc, doc} = require('firebase/firestore');
+
+exports.lambdaHandler = async (event, context) => {
+    console.log(event);
+    const {firstName, lastName, email, password} = event;
+    createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredentials) => {
+            const uid = userCredentials.user.uid;
+            const data = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email
+            }
+
+            setDoc(doc(db, 'users', uid),{
+                ...data
+            }).then((result) => {
+                console.log(result);
+                return {
+                    status: 200,
+                    userId: userCredentials.user.uid
+                }
+            }).catch((error) => {
+                console.error(error);
+            })
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            return {
+                status: 400,
+                errorCode: errorCode,
+                errorMessage: errorMessage
+            }
+        });
+}*/

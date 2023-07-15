@@ -6,6 +6,7 @@ AWS.config.update({
     secretAccessKey: 'FEzGpOyz93oT7tRC/nw9bvETqU6CvM3vCA8vJoA2',
 });
 
+
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 module.exports = dynamodb;

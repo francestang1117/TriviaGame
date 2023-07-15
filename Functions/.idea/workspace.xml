@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="20a97edb-a956-4a15-823b-f6025702c19a" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2SakxYF3FIu9z3F5O2gNzA1Yx24" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;14.16.0&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;14.18.53&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Radhey/Desktop/Functions/Validate&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;C:/Program Files/nodejs/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Radhey\Desktop\Functions\Validate" />
+      <recent name="C:\Users\Radhey\Desktop\Functions" />
+    </key>
+  </component>
+  <component name="RunManager" selected="AWS Lambda.[Local] app.signinSecurityHandler">
+    <configuration name="[Local] HelloWorldFunction" type="aws.lambda" factoryName="Local" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-east-1" />
+      <option name="debugHost" value="localhost" />
+      <option name="architecture" />
+      <option name="environmentVariables">
+        <map />
+      </option>
+      <option name="handler" />
+      <option name="image" value="false" />
+      <option name="logicalFunctionName" value="HelloWorldFunction" />
+      <option name="memorySize" value="128" />
+      <option name="pathMappings">
+        <list />
+      </option>
+      <option name="platform" />
+      <option name="runtime" />
+      <option name="templateFile" value="$PROJECT_DIR$/template.yaml" />
+      <option name="timeout" value="300" />
+      <option name="useTemplate" value="true" />
+      <option name="input" value="C:\Users\Radhey\Desktop\Functions\events\event.json" />
+      <option name="inputIsFile" value="true" />
+      <sam>
+        <option name="additionalBuildArgs" value="" />
+        <option name="additionalLocalArgs" value="" />
+        <option name="buildInContainer" value="false" />
+        <option name="dockerNetwork" value="" />
+        <option name="skipImagePull" value="false" />
+      </sam>
+      <method v="2" />
+    </configuration>
+    <configuration name="[Local] app.lambda" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-east-1" />
+      <option name="debugHost" value="localhost" />
+      <option name="architecture" value="x86_64" />
+      <option name="environmentVariables">
+        <map />
+      </option>
+      <option name="handler" value="app.lambda" />
+      <option name="image" value="false" />
+      <option name="logicalFunctionName" />
+      <option name="memorySize" value="128" />
+      <option name="pathMappings">
+        <list />
+      </option>
+      <option name="platform" />
+      <option name="runtime" value="nodejs14.x" />
+      <option name="templateFile" />
+      <option name="timeout" value="300" />
+      <option name="useTemplate" value="false" />
+      <option name="input" value="C:\Users\Radhey\Desktop\Functions\events\event.json" />
+      <option name="inputIsFile" value="true" />
+      <sam>
+        <option name="additionalBuildArgs" value="" />
+        <option name="additionalLocalArgs" value="" />
+        <option name="buildInContainer" value="false" />
+        <option name="dockerNetwork" value="" />
+        <option name="skipImagePull" value="false" />
+      </sam>
+      <method v="2" />
+    </configuration>
+    <configuration name="[Local] app.lambdaHandler" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-east-1" />
+      <option name="debugHost" value="localhost" />
+      <option name="architecture" value="x86_64" />
+      <option name="environmentVariables">
+        <map />
+      </option>
+      <option name="handler" value="app.lambdaHandler" />
+      <option name="image" value="false" />
+      <option name="logicalFunctionName" />
+      <option name="memorySize" value="128" />
+      <option name="pathMappings">
+        <list />
+      </option>
+      <option name="platform" />
+      <option name="runtime" value="nodejs14.x" />
+      <option name="templateFile" />
+      <option name="timeout" value="300" />
+      <option name="useTemplate" value="false" />
+      <option name="input" value="{&#10;  &quot;userId&quot;: &quot;OULFut1x3IUjRtP0fkrtRn3Vh243&quot;,&#10;  &quot;questions&quot;: [&#10;    {&#10;      &quot;question&quot;: &quot;What was the name of your first pet?&quot;,&#10;      &quot;answer&quot;: &quot;Jhonny&quot;&#10;    },&#10;    {&#10;      &quot;question&quot;: &quot;What is your favorite book?&quot;,&#10;      &quot;answer&quot;: &quot;Physics&quot;&#10;    },&#10;    {&#10;      &quot;question&quot;: &quot;In which city were you born?&quot;,&#10;      &quot;answer&quot;: &quot;Valsadff&quot;&#10;    }&#10;  ]&#10;}" />
+      <option name="inputIsFile" value="false" />
+      <sam>
+        <option name="additionalBuildArgs" value="" />
+        <option name="additionalLocalArgs" value="" />
+        <option name="buildInContainer" value="false" />
+        <option name="dockerNetwork" value="" />
+        <option name="skipImagePull" value="false" />
+      </sam>
+      <method v="2" />
+    </configuration>
+    <configuration name="[Local] app.loginHandler" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-east-1" />
+      <option name="debugHost" value="localhost" />
+      <option name="architecture" value="x86_64" />
+      <option name="environmentVariables">
+        <map />
+      </option>
+      <option name="handler" value="app.loginHandler" />
+      <option name="image" value="false" />
+      <option name="logicalFunctionName" />
+      <option name="memorySize" value="128" />
+      <option name="pathMappings">
+        <list />
+      </option>
+      <option name="platform" />
+      <option name="runtime" value="nodejs14.x" />
+      <option name="templateFile" />
+      <option name="timeout" value="300" />
+      <option name="useTemplate" value="false" />
+      <option name="input" value="{&#10;  &quot;email&quot;: &quot;radheypatel272@gmail.com&quot;,&#10;  &quot;password&quot;: &quot;Radhey@272&quot;&#10;}" />
+      <option name="inputIsFile" value="false" />
+      <sam>
+        <option name="additionalBuildArgs" value="" />
+        <option name="additionalLocalArgs" value="" />
+        <option name="buildInContainer" value="false" />
+        <option name="dockerNetwork" value="" />
+        <option name="skipImagePull" value="false" />
+      </sam>
+      <method v="2" />
+    </configuration>
+    <configuration name="[Local] app.passwordHandler" type="aws.lambda" factoryName="Local" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-east-1" />
+      <option name="debugHost" value="localhost" />
+      <option name="architecture" value="x86_64" />
+      <option name="environmentVariables">
+        <map />
+      </option>
+      <option name="handler" value="app.passwordHandler" />
+      <option name="image" value="false" />
+      <option name="logicalFunctionName" />
+      <option name="memorySize" value="128" />
+      <option name="pathMappings">
+        <list />
+      </option>
+      <option name="platform" />
+      <option name="runtime" value="nodejs14.x" />
+      <option name="templateFile" />
+      <option name="timeout" value="300" />
+      <option name="useTemplate" value="false" />
+      <option name="input" value="{&#10;  &quot;email&quot;: &quot;radheypatel272@gmail.com&quot;&#10;}" />
+      <option name="inputIsFile" value="false" />
+      <sam>
+        <option name="additionalBuildArgs" value="" />
+        <option name="additionalLocalArgs" value="" />
+        <option name="buildInContainer" value="false" />
+        <option name="dockerNetwork" value="" />
+        <option name="skipImagePull" value="false" />
+      </sam>
+      <method v="2" />
+    </configuration>
+    <configuration name="[Local] app.signinSecurityHandler" type="aws.lambda" factoryName="Local" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-east-1" />
+      <option name="debugHost" value="localhost" />
+      <option name="architecture" value="x86_64" />
+      <option name="environmentVariables">
+        <map />
+      </option>
+      <option name="handler" value="app.signinSecurityHandler" />
+      <option name="image" value="false" />
+      <option name="logicalFunctionName" />
+      <option name="memorySize" value="128" />
+      <option name="pathMappings">
+        <list />
+      </option>
+      <option name="platform" />
+      <option name="runtime" value="nodejs14.x" />
+      <option name="templateFile" />
+      <option name="timeout" value="300" />
+      <option name="useTemplate" value="false" />
+      <option name="input" value="{&#10;  &quot;userId&quot;: &quot;OULFut1x3IUjRtP0fkrtRn3Vh243&quot;,&#10;  &quot;questions&quot;: [&#10;    {&#10;      &quot;answer&quot;: &quot;Jhonny&quot;,&#10;      &quot;question&quot;: &quot;What was the name of your first pet?&quot;&#10;    },&#10;    {&#10;      &quot;answer&quot;: &quot;Physics&quot;,&#10;      &quot;question&quot;: &quot;What is your favorite book?&quot;&#10;    },&#10;    {&#10;      &quot;answer&quot;: &quot;Valsad&quot;,&#10;      &quot;question&quot;: &quot;In which city were you born?&quot;&#10;    }&#10;  ]&#10;}" />
+      <option name="inputIsFile" value="false" />
+      <sam>
+        <option name="additionalBuildArgs" value="" />
+        <option name="additionalLocalArgs" value="" />
+        <option name="buildInContainer" value="false" />
+        <option name="dockerNetwork" value="" />
+        <option name="skipImagePull" value="false" />
+      </sam>
+      <method v="2" />
+    </configuration>
+    <configuration name="[Local] app.signupHandler" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-east-1" />
+      <option name="debugHost" value="localhost" />
+      <option name="architecture" value="x86_64" />
+      <option name="environmentVariables">
+        <map />
+      </option>
+      <option name="handler" value="app.signupHandler" />
+      <option name="image" value="false" />
+      <option name="logicalFunctionName" />
+      <option name="memorySize" value="128" />
+      <option name="pathMappings">
+        <list />
+      </option>
+      <option name="platform" />
+      <option name="runtime" value="nodejs14.x" />
+      <option name="templateFile" />
+      <option name="timeout" value="300" />
+      <option name="useTemplate" value="false" />
+      <option name="input" value="{&#10;  &quot;firstName&quot;: &quot;Radhey&quot;,&#10;  &quot;lastName&quot;: &quot;Patel&quot;,&#10;  &quot;email&quot;: &quot;radheypatel272@gmail.com&quot;,&#10;  &quot;password&quot;: &quot;Awesome@272&quot;&#10;}" />
+      <option name="inputIsFile" value="false" />
+      <sam>
+        <option name="additionalBuildArgs" value="" />
+        <option name="additionalLocalArgs" value="" />
+        <option name="buildInContainer" value="false" />
+        <option name="dockerNetwork" value="" />
+        <option name="skipImagePull" value="false" />
+      </sam>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="AWS Lambda.[Local] app.lambdaHandler" />
+        <item itemvalue="AWS Lambda.[Local] app.loginHandler" />
+        <item itemvalue="AWS Lambda.[Local] app.signupHandler" />
+        <item itemvalue="AWS Lambda.[Local] app.lambda" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="20a97edb-a956-4a15-823b-f6025702c19a" name="Changes" comment="" />
+      <created>1689392328272</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689392328272</updated>
+      <workItem from="1689392329502" duration="3902000" />
+      <workItem from="1689396470216" duration="5277000" />
+      <workItem from="1689402016706" duration="216000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Signup/app.js</url>
+          <line>8</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/SignupSecurityQuestions/app.js</url>
+          <line>5</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
