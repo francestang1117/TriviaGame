@@ -56,3 +56,12 @@ Resources:
       Runtime: nodejs14.x
       Architectures:
         - x86_64
+
+  Notifications:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Notifications/
+      Handler: app.notificationsHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
