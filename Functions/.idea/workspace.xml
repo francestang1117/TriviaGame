@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20a97edb-a956-4a15-823b-f6025702c19a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Notifications/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Notifications/app.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,7 +317,7 @@
       <workItem from="1689392329502" duration="3902000" />
       <workItem from="1689396470216" duration="5277000" />
       <workItem from="1689402016706" duration="216000" />
-      <workItem from="1689477606737" duration="1419000" />
+      <workItem from="1689477606737" duration="2749000" />
     </task>
     <servers />
   </component>
@@ -337,12 +336,6 @@
           <url>file://$PROJECT_DIR$/SignupSecurityQuestions/app.js</url>
           <line>5</line>
           <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/Notifications/app.js</url>
-          <line>6</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,6 +1,18 @@
 const nodemailer = require('nodemailer');
 const { user, pass } = require('./config');
 
+/**
+ * @api {post} /user/notification Send notification
+ * @requires body
+ * {
+ *     "to": <USER_EMAIL>,
+ *     "subject": <SUBJECT>,
+ *     "body": <BODY>
+ * }
+ *
+ * @returns {json}
+ * */
+
 exports.notificationsHandler = async (event, context) => {
     try {
         const { to, subject, body } = event;
