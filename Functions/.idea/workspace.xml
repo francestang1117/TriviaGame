@@ -7,6 +7,11 @@
     <list default="true" id="20a97edb-a956-4a15-823b-f6025702c19a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Notifications/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Notifications/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Signup/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/Signup/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SignupSecurityQuestions/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/SignupSecurityQuestions/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ValidateSecurityQuestions/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/ValidateSecurityQuestions/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events/event.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/template.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,23 +37,33 @@
     "WebServerToolWindowFactoryState": "false",
     "javascript.nodejs.core.library.configured.version": "14.16.0",
     "javascript.nodejs.core.library.typings.version": "14.18.53",
-    "last_opened_file_path": "C:/Users/Radhey/Desktop/csci5410-summer-23-sdp1/Functions",
+    "last_opened_file_path": "C:/Users/Radhey/Desktop/csci5410-summer-23-sdp1/Functions/Categories/body.json",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_interpreter_path": "C:/Program Files/nodejs/node",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Radhey\Desktop\Functions\Validate" />
-      <recent name="C:\Users\Radhey\Desktop\Functions" />
+      <recent name="C:\Users\Radhey\Desktop\csci5410-summer-23-sdp1\Functions\Categories" />
+      <recent name="C:\Users\Radhey\Desktop\csci5410-summer-23-sdp1\Functions\Questions\filter" />
+      <recent name="C:\Users\Radhey\Desktop\csci5410-summer-23-sdp1\Functions\Questions\edit" />
+      <recent name="C:\Users\Radhey\Desktop\csci5410-summer-23-sdp1\Functions\Questions\get" />
+      <recent name="C:\Users\Radhey\Desktop\csci5410-summer-23-sdp1\Functions\Questions\delete" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Radhey\Desktop\csci5410-summer-23-sdp1\Functions\Questions" />
     </key>
   </component>
-  <component name="RunManager" selected="AWS Lambda.[Local] app.notificationsHandler">
+  <component name="RunManager" selected="AWS Lambda.[Local] app.deleteCategoryHandler">
+    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/Categories/app.js" working-dir="$PROJECT_DIR$/Categories">
+      <method v="2" />
+    </configuration>
     <configuration name="[Local] HelloWorldFunction" type="aws.lambda" factoryName="Local" nameIsGenerated="true">
       <option name="credentialProviderId" value="profile:default" />
       <option name="regionId" value="us-east-1" />
@@ -80,7 +95,7 @@
       </sam>
       <method v="2" />
     </configuration>
-    <configuration name="[Local] app.lambda" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
+    <configuration name="[Local] app.addCategoryHandler" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
       <option name="credentialProviderId" value="profile:default" />
       <option name="regionId" value="us-east-1" />
       <option name="debugHost" value="localhost" />
@@ -88,7 +103,7 @@
       <option name="environmentVariables">
         <map />
       </option>
-      <option name="handler" value="app.lambda" />
+      <option name="handler" value="app.addCategoryHandler" />
       <option name="image" value="false" />
       <option name="logicalFunctionName" />
       <option name="memorySize" value="128" />
@@ -100,7 +115,7 @@
       <option name="templateFile" />
       <option name="timeout" value="300" />
       <option name="useTemplate" value="false" />
-      <option name="input" value="C:\Users\Radhey\Desktop\Functions\events\event.json" />
+      <option name="input" value="C:\Users\Radhey\Desktop\csci5410-summer-23-sdp1\Functions\Categories\body.json" />
       <option name="inputIsFile" value="true" />
       <sam>
         <option name="additionalBuildArgs" value="" />
@@ -111,7 +126,7 @@
       </sam>
       <method v="2" />
     </configuration>
-    <configuration name="[Local] app.lambdaHandler" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
+    <configuration name="[Local] app.addQuestionHandler" type="aws.lambda" factoryName="Local" nameIsGenerated="true">
       <option name="credentialProviderId" value="profile:default" />
       <option name="regionId" value="us-east-1" />
       <option name="debugHost" value="localhost" />
@@ -119,7 +134,7 @@
       <option name="environmentVariables">
         <map />
       </option>
-      <option name="handler" value="app.lambdaHandler" />
+      <option name="handler" value="app.addQuestionHandler" />
       <option name="image" value="false" />
       <option name="logicalFunctionName" />
       <option name="memorySize" value="128" />
@@ -131,7 +146,38 @@
       <option name="templateFile" />
       <option name="timeout" value="300" />
       <option name="useTemplate" value="false" />
-      <option name="input" value="{&#10;  &quot;userId&quot;: &quot;OULFut1x3IUjRtP0fkrtRn3Vh243&quot;,&#10;  &quot;questions&quot;: [&#10;    {&#10;      &quot;question&quot;: &quot;What was the name of your first pet?&quot;,&#10;      &quot;answer&quot;: &quot;Jhonny&quot;&#10;    },&#10;    {&#10;      &quot;question&quot;: &quot;What is your favorite book?&quot;,&#10;      &quot;answer&quot;: &quot;Physics&quot;&#10;    },&#10;    {&#10;      &quot;question&quot;: &quot;In which city were you born?&quot;,&#10;      &quot;answer&quot;: &quot;Valsadff&quot;&#10;    }&#10;  ]&#10;}" />
+      <option name="input" value="C:\Users\Radhey\Desktop\csci5410-summer-23-sdp1\Functions\Questions\body.json" />
+      <option name="inputIsFile" value="true" />
+      <sam>
+        <option name="additionalBuildArgs" value="" />
+        <option name="additionalLocalArgs" value="" />
+        <option name="buildInContainer" value="false" />
+        <option name="dockerNetwork" value="" />
+        <option name="skipImagePull" value="false" />
+      </sam>
+      <method v="2" />
+    </configuration>
+    <configuration name="[Local] app.comprehendHandler" type="aws.lambda" factoryName="Local" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-east-1" />
+      <option name="debugHost" value="localhost" />
+      <option name="architecture" value="x86_64" />
+      <option name="environmentVariables">
+        <map />
+      </option>
+      <option name="handler" value="app.comprehendHandler" />
+      <option name="image" value="false" />
+      <option name="logicalFunctionName" />
+      <option name="memorySize" value="128" />
+      <option name="pathMappings">
+        <list />
+      </option>
+      <option name="platform" />
+      <option name="runtime" value="nodejs14.x" />
+      <option name="templateFile" />
+      <option name="timeout" value="300" />
+      <option name="useTemplate" value="false" />
+      <option name="input" value="{&#10;  &quot;question&quot;: &quot;How many planets are there in our solar system?&quot;&#10;}" />
       <option name="inputIsFile" value="false" />
       <sam>
         <option name="additionalBuildArgs" value="" />
@@ -142,7 +188,7 @@
       </sam>
       <method v="2" />
     </configuration>
-    <configuration name="[Local] app.loginHandler" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
+    <configuration name="[Local] app.deleteCategoryHandler" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
       <option name="credentialProviderId" value="profile:default" />
       <option name="regionId" value="us-east-1" />
       <option name="debugHost" value="localhost" />
@@ -150,7 +196,7 @@
       <option name="environmentVariables">
         <map />
       </option>
-      <option name="handler" value="app.loginHandler" />
+      <option name="handler" value="app.deleteCategoryHandler" />
       <option name="image" value="false" />
       <option name="logicalFunctionName" />
       <option name="memorySize" value="128" />
@@ -162,7 +208,100 @@
       <option name="templateFile" />
       <option name="timeout" value="300" />
       <option name="useTemplate" value="false" />
-      <option name="input" value="{&#10;  &quot;email&quot;: &quot;radheypatel272@gmail.com&quot;,&#10;  &quot;password&quot;: &quot;Radhey@272&quot;&#10;}" />
+      <option name="input" value="C:\Users\Radhey\Desktop\csci5410-summer-23-sdp1\Functions\Categories\body.json" />
+      <option name="inputIsFile" value="true" />
+      <sam>
+        <option name="additionalBuildArgs" value="" />
+        <option name="additionalLocalArgs" value="" />
+        <option name="buildInContainer" value="false" />
+        <option name="dockerNetwork" value="" />
+        <option name="skipImagePull" value="false" />
+      </sam>
+      <method v="2" />
+    </configuration>
+    <configuration name="[Local] app.editQuestionHandler" type="aws.lambda" factoryName="Local" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-east-1" />
+      <option name="debugHost" value="localhost" />
+      <option name="architecture" value="x86_64" />
+      <option name="environmentVariables">
+        <map />
+      </option>
+      <option name="handler" value="app.editQuestionHandler" />
+      <option name="image" value="false" />
+      <option name="logicalFunctionName" />
+      <option name="memorySize" value="128" />
+      <option name="pathMappings">
+        <list />
+      </option>
+      <option name="platform" />
+      <option name="runtime" value="nodejs14.x" />
+      <option name="templateFile" />
+      <option name="timeout" value="300" />
+      <option name="useTemplate" value="false" />
+      <option name="input" value="C:\Users\Radhey\Desktop\csci5410-summer-23-sdp1\Functions\Questions\body.json" />
+      <option name="inputIsFile" value="true" />
+      <sam>
+        <option name="additionalBuildArgs" value="" />
+        <option name="additionalLocalArgs" value="" />
+        <option name="buildInContainer" value="false" />
+        <option name="dockerNetwork" value="" />
+        <option name="skipImagePull" value="false" />
+      </sam>
+      <method v="2" />
+    </configuration>
+    <configuration name="[Local] app.filterQuestionsHandler" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-east-1" />
+      <option name="debugHost" value="localhost" />
+      <option name="architecture" value="x86_64" />
+      <option name="environmentVariables">
+        <map />
+      </option>
+      <option name="handler" value="app.filterQuestionsHandler" />
+      <option name="image" value="false" />
+      <option name="logicalFunctionName" />
+      <option name="memorySize" value="128" />
+      <option name="pathMappings">
+        <list />
+      </option>
+      <option name="platform" />
+      <option name="runtime" value="nodejs14.x" />
+      <option name="templateFile" />
+      <option name="timeout" value="300" />
+      <option name="useTemplate" value="false" />
+      <option name="input" value="C:\Users\Radhey\Desktop\csci5410-summer-23-sdp1\Functions\Questions\body.json" />
+      <option name="inputIsFile" value="true" />
+      <sam>
+        <option name="additionalBuildArgs" value="" />
+        <option name="additionalLocalArgs" value="" />
+        <option name="buildInContainer" value="false" />
+        <option name="dockerNetwork" value="" />
+        <option name="skipImagePull" value="false" />
+      </sam>
+      <method v="2" />
+    </configuration>
+    <configuration name="[Local] app.getCategoriesHandler" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
+      <option name="credentialProviderId" value="profile:default" />
+      <option name="regionId" value="us-east-1" />
+      <option name="debugHost" value="localhost" />
+      <option name="architecture" value="x86_64" />
+      <option name="environmentVariables">
+        <map />
+      </option>
+      <option name="handler" value="app.getCategoriesHandler" />
+      <option name="image" value="false" />
+      <option name="logicalFunctionName" />
+      <option name="memorySize" value="128" />
+      <option name="pathMappings">
+        <list />
+      </option>
+      <option name="platform" />
+      <option name="runtime" value="nodejs14.x" />
+      <option name="templateFile" />
+      <option name="timeout" value="300" />
+      <option name="useTemplate" value="false" />
+      <option name="input" value="{}" />
       <option name="inputIsFile" value="false" />
       <sam>
         <option name="additionalBuildArgs" value="" />
@@ -266,43 +405,13 @@
       </sam>
       <method v="2" />
     </configuration>
-    <configuration name="[Local] app.signupHandler" type="aws.lambda" factoryName="Local" temporary="true" nameIsGenerated="true">
-      <option name="credentialProviderId" value="profile:default" />
-      <option name="regionId" value="us-east-1" />
-      <option name="debugHost" value="localhost" />
-      <option name="architecture" value="x86_64" />
-      <option name="environmentVariables">
-        <map />
-      </option>
-      <option name="handler" value="app.signupHandler" />
-      <option name="image" value="false" />
-      <option name="logicalFunctionName" />
-      <option name="memorySize" value="128" />
-      <option name="pathMappings">
-        <list />
-      </option>
-      <option name="platform" />
-      <option name="runtime" value="nodejs14.x" />
-      <option name="templateFile" />
-      <option name="timeout" value="300" />
-      <option name="useTemplate" value="false" />
-      <option name="input" value="{&#10;  &quot;firstName&quot;: &quot;Radhey&quot;,&#10;  &quot;lastName&quot;: &quot;Patel&quot;,&#10;  &quot;email&quot;: &quot;radheypatel272@gmail.com&quot;,&#10;  &quot;password&quot;: &quot;Awesome@272&quot;&#10;}" />
-      <option name="inputIsFile" value="false" />
-      <sam>
-        <option name="additionalBuildArgs" value="" />
-        <option name="additionalLocalArgs" value="" />
-        <option name="buildInContainer" value="false" />
-        <option name="dockerNetwork" value="" />
-        <option name="skipImagePull" value="false" />
-      </sam>
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="AWS Lambda.[Local] app.lambdaHandler" />
-        <item itemvalue="AWS Lambda.[Local] app.loginHandler" />
-        <item itemvalue="AWS Lambda.[Local] app.signupHandler" />
-        <item itemvalue="AWS Lambda.[Local] app.lambda" />
+        <item itemvalue="AWS Lambda.[Local] app.deleteCategoryHandler" />
+        <item itemvalue="AWS Lambda.[Local] app.getCategoriesHandler" />
+        <item itemvalue="AWS Lambda.[Local] app.addCategoryHandler" />
+        <item itemvalue="Node.js.app.js" />
+        <item itemvalue="AWS Lambda.[Local] app.filterQuestionsHandler" />
       </list>
     </recent_temporary>
   </component>
@@ -317,12 +426,41 @@
       <workItem from="1689392329502" duration="3902000" />
       <workItem from="1689396470216" duration="5277000" />
       <workItem from="1689402016706" duration="216000" />
-      <workItem from="1689477606737" duration="2749000" />
+      <workItem from="1689477606737" duration="3179000" />
+      <workItem from="1689491885123" duration="2450000" />
+      <workItem from="1689508293460" duration="1593000" />
+      <workItem from="1689521504322" duration="3959000" />
+      <workItem from="1689709620513" duration="2119000" />
+      <workItem from="1689711786095" duration="194000" />
+      <workItem from="1689711996760" duration="6094000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/radhey" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -333,9 +471,14 @@
           <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/SignupSecurityQuestions/app.js</url>
-          <line>5</line>
-          <option name="timeStamp" value="10" />
+          <url>file://$PROJECT_DIR$/QuestionTagging/app.js</url>
+          <line>14</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/Questions/get/app.js</url>
+          <line>3</line>
+          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

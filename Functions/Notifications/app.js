@@ -36,12 +36,12 @@ exports.notificationsHandler = async (event, context) => {
             transporter.sendMail(mailOptions, (error, info) => {
                 if (error) {
                     console.error(error);
-                    const response = {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+
+                    const response =  {
                         statusCode: 500,
-                        body: JSON.stringify({
-                            status: '500',
-                            message: error
-                        })
+                        body : JSON.stringify({ status: 500, errorCode: errorCode, errorMessage: errorMessage })
                     };
                     reject(response);
                 } else {
@@ -58,13 +58,13 @@ exports.notificationsHandler = async (event, context) => {
             });
         });
     } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
         console.error(error);
+
         const response = {
             statusCode: 500,
-            body: JSON.stringify({
-                status: '500',
-                message: error
-            })
+            body : JSON.stringify({ status: 500, errorCode: errorCode, errorMessage: errorMessage })
         };
         return response;
     }

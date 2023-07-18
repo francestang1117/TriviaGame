@@ -65,3 +65,66 @@ Resources:
       Runtime: nodejs14.x
       Architectures:
         - x86_64
+
+  AddQuestions:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Questions/
+      Handler: app.addQuestionHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  EditQuestions:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Questions/
+      Handler: app.editQuestionHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  DeleteQuestions:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Questions/
+      Handler: app.deleteQuestionHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  FilterQuestions:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Questions/
+      Handler: app.filterQuestionsHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  AddCategory:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Categories/
+      Handler: app.addCategoryHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  GetCategory:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Categories/
+      Handler: app.getCategoriesHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  DeleteCategory:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Categories/
+      Handler: app.deleteCategoryHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64

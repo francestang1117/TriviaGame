@@ -54,10 +54,13 @@ exports.signinSecurityHandler = async (event, context) => {
         console.log(flag);
         return flag ? successfulResponse : fatalResponse;
     } catch (err) {
-        console.log(err);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(error);
+
         return {
             statusCode: 500,
-            body: JSON.stringify({ message: 'Internal Server Error' }),
+            body : JSON.stringify({ status: 500, errorCode: errorCode, errorMessage: errorMessage })
         };
     }
 };

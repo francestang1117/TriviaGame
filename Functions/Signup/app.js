@@ -27,8 +27,8 @@ exports.signupHandler = async (event, context) => {
         console.error(error);
 
         return {
-            statusCode: 400,
-            body: JSON.stringify({ status: 400, errorCode: errorCode, errorMessage: errorMessage })
+            statusCode: 500,
+            body : JSON.stringify({ status: 500, errorCode: errorCode, errorMessage: errorMessage })
         };
     }
 };

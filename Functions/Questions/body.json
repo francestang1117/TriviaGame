@@ -1,0 +1,33 @@
+{
+  "question": "Updated Question",
+  "options": [
+    {
+      "content": "<Option Content>"
+    },
+    {
+      "content": "<Option Content>"
+    },
+    {
+      "content": "<Option Content>"
+    },
+    {
+      "content": "<Option Content>"
+    }
+  ],
+  "answer": "<Option Index>",
+  "explanation": "<Explanation>",
+  "timeframe": "<Time in Seconds>",
+  "difficulty": "Hard",
+  "category": "Science",
+  "hints": [
+    {
+      "content": "<Hint Content>"
+    },
+    {
+      "content": "<Hint Content>"
+    },
+    {
+      "content": "<Hint Content>"
+    }
+  ]
+}
