@@ -56,6 +56,15 @@ exports.gameHandler = async (event) => {
 }
 
 // Filtering the games on the basis of category, timeframe and difficulty
+/**
+ * {
+ *     category: string,
+ *     difficulty: string,
+ *     timeframe: string
+ * }
+ *
+ * NOTE: OR condition is supported.
+ * */
 exports.getGamesHandler = async (event) => {
     const {category, difficulty, timeframe} = event;
 
