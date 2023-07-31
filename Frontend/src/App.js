@@ -6,6 +6,7 @@ import SignupPage from './components/Signup';
 import PasswordRecovery from './components/RecoverPassword';
 import SecurityQuestionsPage from "./components/SignupSecurityQuestions";
 import SigninSecurityQuestionPage from "./components/SinginSecurityQuestions";
+import CreateGame from "./components/addGame";
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
         <Route path='/password-recover' element={<PasswordRecovery />} />
           <Route path='/signup/security-questions' element={<SecurityQuestionsPage />} />
           <Route path='/signin/security-questions' element={<SigninSecurityQuestionPage />} />
+        <Route path = "/game" element={<CreateGame />} />
       </Routes>
     </BrowserRouter>
   );

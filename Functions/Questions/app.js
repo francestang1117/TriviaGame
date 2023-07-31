@@ -1,5 +1,5 @@
 const dynamodb = require('aws-config.js');
-const { v4: uuid } = require('uuid');
+const {v4: uuid} = require('uuid');
 
 exports.addQuestionHandler = async (event, context) => {
     try {
@@ -14,10 +14,10 @@ exports.addQuestionHandler = async (event, context) => {
             hints
         } = event;
 
-        if(event.questionId) {
+        if (event.questionId) {
             return {
                 statusCode: 400,
-                body: JSON.stringify({ status: 400, message: "questionId should not be provided!" })
+                body: JSON.stringify({status: 400, message: "questionId should not be provided!"})
             }
         }
 
@@ -33,7 +33,7 @@ exports.addQuestionHandler = async (event, context) => {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ status: 200, message: "Question saved!" })
+            body: JSON.stringify({status: 200, message: "Question saved!"})
         }
     } catch (error) {
         const errorCode = error.code;
@@ -42,7 +42,7 @@ exports.addQuestionHandler = async (event, context) => {
 
         return {
             statusCode: 500,
-            body : JSON.stringify({ status: 500, errorCode: errorCode, errorMessage: errorMessage })
+            body: JSON.stringify({status: 500, errorCode: errorCode, errorMessage: errorMessage})
         };
     }
 }
@@ -61,10 +61,10 @@ exports.editQuestionHandler = async (event, context) => {
             hints
         } = event;
 
-        if(!event.questionId) {
+        if (!event.questionId) {
             return {
                 statusCode: 400,
-                body: JSON.stringify({ status: 400, message: "questionId should be provided!" })
+                body: JSON.stringify({status: 400, message: "questionId should be provided!"})
             }
         }
 
@@ -91,7 +91,7 @@ exports.editQuestionHandler = async (event, context) => {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ status: 200, message: "Question updated!" })
+            body: JSON.stringify({status: 200, message: "Question updated!"})
         }
     } catch (error) {
         const errorCode = error.code;
@@ -100,21 +100,21 @@ exports.editQuestionHandler = async (event, context) => {
 
         return {
             statusCode: 500,
-            body : JSON.stringify({ status: 500, errorCode: errorCode, errorMessage: errorMessage })
+            body: JSON.stringify({status: 500, errorCode: errorCode, errorMessage: errorMessage})
         };
     }
 }
 
 exports.deleteQuestionHandler = async (event, context) => {
-try {
+    try {
         const data = {
             questionId
         } = event;
 
-        if(!event.questionId) {
+        if (!event.questionId) {
             return {
                 statusCode: 400,
-                body: JSON.stringify({ status: 400, message: "questionId should be provided!" })
+                body: JSON.stringify({status: 400, message: "questionId should be provided!"})
             }
         }
 
@@ -129,22 +129,22 @@ try {
 
         return {
             statusCode: 200,
-            body: JSON.stringify({ status: 200, message: "Question deleted!" })
+            body: JSON.stringify({status: 200, message: "Question deleted!"})
         }
     } catch (error) {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    console.error(error);
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(error);
 
-    return {
-        statusCode: 500,
-        body : JSON.stringify({ status: 500, errorCode: errorCode, errorMessage: errorMessage })
-    };
+        return {
+            statusCode: 500,
+            body: JSON.stringify({status: 500, errorCode: errorCode, errorMessage: errorMessage})
+        };
     }
 }
 
 exports.filterQuestionsHandler = async (event, context) => {
-    const { category, difficulty, timeframe } = event;
+    const {category, difficulty, timeframe} = event;
 
     try {
         let params = {
@@ -197,12 +197,12 @@ exports.filterQuestionsHandler = async (event, context) => {
             if (result.Items.length === 0) {
                 return {
                     statusCode: 404,
-                    body: JSON.stringify({ status: 404, message: 'Questions not found!' })
+                    body: JSON.stringify({status: 404, message: 'Questions not found!'})
                 };
             } else {
                 return {
                     statusCode: 200,
-                    body: JSON.stringify({ status: 200, message: 'Questions retrieved!', data: result.Items })
+                    body: JSON.stringify({status: 200, message: 'Questions retrieved!', data: result.Items})
                 };
             }
         }
@@ -212,12 +212,12 @@ exports.filterQuestionsHandler = async (event, context) => {
         if (result.Items.length === 0) {
             return {
                 statusCode: 404,
-                body: JSON.stringify({ status: 404, message: 'Questions not found!' })
+                body: JSON.stringify({status: 404, message: 'Questions not found!'})
             };
         } else {
             return {
                 statusCode: 200,
-                body: JSON.stringify({ status: 200, message: 'Questions retrieved!', data: result.Items })
+                body: JSON.stringify({status: 200, message: 'Questions retrieved!', data: result.Items})
             };
         }
     } catch (error) {
@@ -227,7 +227,58 @@ exports.filterQuestionsHandler = async (event, context) => {
 
         return {
             statusCode: 500,
-            body : JSON.stringify({ status: 500, errorCode: errorCode, errorMessage: errorMessage })
+            body: JSON.stringify({status: 500, errorCode: errorCode, errorMessage: errorMessage})
+        };
+    }
+}
+
+exports.getQuestionsForGameHandler = async (event, context) => {
+    const {gameId} = event;
+    try {
+		if (!gameId) {
+            return {
+                statusCode: 400,
+                body: JSON.stringify({status: 400, message: "gameId should be provided!"})
+            }
+        } else {
+            const gameParams = {
+                TableName: 'Games',
+                Key: { id: gameId },
+            };
+
+            const gameData = await dynamodb.get(gameParams).promise();
+
+            if (!gameData.Item) {
+                return {
+                    statusCode: 404,
+                    body: JSON.stringify({status: 404, message: "Game not found!"})
+                }
+            } else {
+                const questionsData = [];
+                for (const question of gameData.Item.questions) {
+                    const questionParams = {
+                        TableName: 'Questions',
+                        Key: {questionId: question.id},
+                    };
+                    const questionData = await dynamodb.get(questionParams).promise();
+                    if (questionData.Item) {
+                        questionsData.push(questionData.Item);
+                    }
+                }
+                return {
+                    statusCode: 200,
+                    body: JSON.stringify({status: 200, data: questionsData})
+                };
+            }
+        }
+    } catch (error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error(error);
+
+        return {
+            statusCode: 500,
+            body: JSON.stringify({status: 500, errorCode: errorCode, errorMessage: errorMessage})
         };
     }
 }

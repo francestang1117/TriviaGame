@@ -128,3 +128,30 @@ Resources:
       Runtime: nodejs14.x
       Architectures:
         - x86_64
+
+  Game:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Game/
+      Handler: app.gameHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  GetGames:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Game/
+      Handler: app.getGamesHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
+
+  GetQuestionsForGame:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: Questions/
+      Handler: app.getQuestionsForGameHandler
+      Runtime: nodejs14.x
+      Architectures:
+        - x86_64
