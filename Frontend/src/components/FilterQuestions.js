@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, TextField, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, makeStyles } from '@material-ui/core';
-
+import API from '../config/constants';
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
@@ -29,7 +29,7 @@ const FilterQuestions = () => {
     };
 
     const handleFilter = () => {
-        axios.post('https://izqqhm2lde.execute-api.us-east-1.amazonaws.com/dev/question', {
+        axios.post(`${API}/question`, {
 
                 category: category,
                 difficulty: difficulty,

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import {GoogleSignin} from './GoogleSignin';
 import axios from "axios";
+import API from "../config/constants";
 
 function SignupPage() {
     const [firstName, setFirstName] = useState('');
@@ -55,7 +56,7 @@ function SignupPage() {
             password: password
         }
 
-        axios.post('http://localhost:3000/user/signup', {
+        axios.post(`${API}/user/signup`, {
             ...data
         }).then((result) => {
             if (result.status === 200) {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './addQuestions.css';
+import API from '../config/constants';
 
 function AddQuestions() {
     const [questionData, setQuestionData] = useState({
@@ -32,7 +33,7 @@ function AddQuestions() {
         };
 
         try {
-            const response = await axios.post('https://izqqhm2lde.execute-api.us-east-1.amazonaws.com/dev/question/add', dataToSend);
+            const response = await axios.post(`${API}/question/add`, dataToSend);
             console.log(response.data);
             alert('Question added successfully!');
         } catch (error) {

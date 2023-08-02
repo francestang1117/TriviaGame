@@ -2,6 +2,7 @@ import { React, useState } from "react";
 import {auth} from '../config/Firebase';
 import {  sendPasswordResetEmail  } from 'firebase/auth';
 import axios from "axios";
+import API from '../config/constants';
 
 function PasswordRecovery() {
 
@@ -12,7 +13,7 @@ function PasswordRecovery() {
     }
 
     const handleRecovery = () => {
-        axios.post('http://localhost:3000/user/resetpassword', {
+        axios.post(`${API}/user/reset-password`, {
           email: email
         })
         .then((message) => {
