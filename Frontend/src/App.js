@@ -9,10 +9,13 @@ import SigninSecurityQuestionPage from "./components/SinginSecurityQuestions";
 import CreateGame from "./components/addGame";
 import AddQuestions from "./components/addQuestions";
 import FilterQuestions from "./components/FilterQuestions";
+import Navbar from './components/Navbar';
+import LexV2Chatbot from './components/LexChatBot';
 
 function App() {
     return (
         <BrowserRouter>
+            <Navbar/>
             <Routes>
                 <Route path="/" element={<HomePage/>}/>
                 <Route path='/signin' element={<Signin/>}/>
@@ -23,6 +26,7 @@ function App() {
                 <Route path="/game" element={<CreateGame/>}/>
         		<Route path="/question/add" element={<AddQuestions/>}/>
                 <Route path={"/question/list"} element={<FilterQuestions/>}/>
+                <Route path='/bot' element={<LexV2Chatbot />} />
             </Routes>
         </BrowserRouter>
     );
