@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, TextField, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, makeStyles } from '@material-ui/core';
+import { Button, TextField, Paper, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, makeStyles } from '@mui/material';
 import API from '../config/constants';
-const useStyles = makeStyles({
-    table: {
-        minWidth: 650,
-    },
-});
+// const useStyles = makeStyles({
+//     table: {
+//         minWidth: 650,
+//     },
+// });
 
 const FilterQuestions = () => {
-    const classes = useStyles();
+    // const classes = useStyles();
 
     const [difficulty, setDifficulty] = useState('');
     const [category, setCategory] = useState('');
@@ -54,7 +54,9 @@ const FilterQuestions = () => {
             </Button>
             {questions ? (
                 <TableContainer component={Paper}>
-                    <Table className={classes.table} aria-label="simple table">
+                    <Table 
+                    // className={classes.table} 
+                    aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell>Question</TableCell>
