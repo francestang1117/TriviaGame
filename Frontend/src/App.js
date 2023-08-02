@@ -11,6 +11,7 @@ import AddQuestions from "./components/addQuestions";
 import FilterQuestions from "./components/FilterQuestions";
 import Navbar from './components/Navbar';
 import LexV2Chatbot from './components/LexChatBot';
+import TeamGenerator from './components/TeamGenerator';
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
         		<Route path="/question/add" element={<AddQuestions/>}/>
                 <Route path={"/question/list"} element={<FilterQuestions/>}/>
                 <Route path='/bot' element={<LexV2Chatbot />} />
+                <Route path='/teammanagment' element={<TeamGenerator/>} />
             </Routes>
         </BrowserRouter>
     );
