@@ -9,6 +9,8 @@ import SigninSecurityQuestionPage from "./components/SinginSecurityQuestions";
 import CreateGame from "./components/addGame";
 import AddQuestions from "./components/addQuestions";
 import FilterQuestions from "./components/FilterQuestions";
+import Navbar from './components/Navbar';
+import LexV2Chatbot from './components/LexChatBot';
 
 function App() {
     return (
@@ -22,7 +24,7 @@ function App() {
                 <Route path='/signup/security-questions' element={<SecurityQuestionsPage/>}/>
                 <Route path='/signin/security-questions' element={<SigninSecurityQuestionPage/>}/>
                 <Route path="/game" element={<CreateGame/>}/>
-        		    <Route path="/question/add" element={<AddQuestions/>}/>
+        		<Route path="/question/add" element={<AddQuestions/>}/>
                 <Route path={"/question/list"} element={<FilterQuestions/>}/>
                 <Route path='/bot' element={<LexV2Chatbot />} />
             </Routes>
