@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import axios from "axios";
+import API from "../config/constants";
 
 const SigninSecurityQuestionsPage = () => {
     const navigate = useNavigate();
@@ -65,7 +66,7 @@ const SigninSecurityQuestionsPage = () => {
             };
 
             console.log(data);
-            axios.post('http://localhost:3000/user/signin/security-questions', {
+            axios.post(`${API}/user/login/security-questions`, {
                 data
             }).then((response) => {
                 console.log(response);

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, TextField, Paper, Select, MenuItem, InputLabel, FormControl, makeStyles } from '@material-ui/core';
 
+import API from '../config/constants';
+
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -46,7 +48,7 @@ const CreateGame = () => {
         // Split questionIds by comma to create an array
         const questions = questionIds.split(',').map(id => id.trim());
 
-        axios.post('https://izqqhm2lde.execute-api.us-east-1.amazonaws.com/dev/game/add', {
+        axios.post(`${API}/game/add`, {
             gameName,
             gameDescription,
             gameCategory,

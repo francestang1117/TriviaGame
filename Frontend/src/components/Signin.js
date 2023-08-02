@@ -3,7 +3,7 @@ import {Link, useNavigate} from "react-router-dom";
 import {auth} from "../config/Firebase";
 import {GoogleSignin} from "./GoogleSignin";
 import axios from "axios";
-
+import API from "../config/constants";
 
 function Signin() {
     const [email, setEmail] = useState('');
@@ -29,7 +29,7 @@ function Signin() {
         console.log('Email:', email);
         console.log('Password:', password);
 
-        axios.post('http://localhost:3000/user/signin', {
+        axios.post(`${API}/user/login`, {
                 email: email,
                 password: password
             })

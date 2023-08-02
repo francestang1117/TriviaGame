@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import dynamodb from '../config/aws-config';
 import axios from "axios";
+import API from "../config/constants";
 
 const SecurityQuestionsPage = () => {
     const navigate = useNavigate();
@@ -62,7 +63,7 @@ const SecurityQuestionsPage = () => {
                 ]
             }
             console.log(data);
-            await axios.post('http://localhost:3000/user/signup/security-questions', {
+            await axios.post(`${API}/user/signup/security-questions`, {
                 data
             }).then((result) => {
                 if (result.status === 200) {
