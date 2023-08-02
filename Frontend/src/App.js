@@ -7,9 +7,13 @@ import PasswordRecovery from './components/RecoverPassword';
 import SecurityQuestionsPage from "./components/SignupSecurityQuestions";
 import SigninSecurityQuestionPage from "./components/SinginSecurityQuestions";
 import CreateGame from "./components/addGame";
+import Navbar from './components/Navbar';
+import LexV2Chatbot from './components/LexChatBot';
+
 function App() {
   return (
     <BrowserRouter>
+      <Navbar/>
       <Routes>
         <Route path="/" element={<HomePage />} /> 
         <Route path='/signin' element={<Signin />} />
@@ -18,6 +22,7 @@ function App() {
           <Route path='/signup/security-questions' element={<SecurityQuestionsPage />} />
           <Route path='/signin/security-questions' element={<SigninSecurityQuestionPage />} />
         <Route path = "/game" element={<CreateGame />} />
+        <Route path='/bot' element={<LexV2Chatbot />} />
       </Routes>
     </BrowserRouter>
   );
