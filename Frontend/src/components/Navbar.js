@@ -24,6 +24,9 @@ const Navbar = () => {
 		  <Button color="inherit" component={Link} to="/bot">
 			Virtual Assistance
 		  </Button>
+		  <Button color="inherit" component={Link} to="/teammanagment">
+			Create Team
+		  </Button>
 		  {/* Add more navigation links as needed */}
 		</Toolbar>
 	  </AppBar>
