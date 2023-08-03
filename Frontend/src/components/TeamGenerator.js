@@ -55,7 +55,7 @@ function TeamGenerator() {
       console.log(TeamName + "------------------------------------------------");
 
       const response = await axios.post(
-        ' https://izqqhm2lde.execute-api.us-east-1.amazonaws.com/dev/test12',
+        'https://z2d896tfv7.execute-api.us-east-1.amazonaws.com/dev/viewStatistic',
         { teamName: TeamName }, // Pass the teamName to the Lambda function
         config // Include the headers in the request configuration
       );
@@ -97,8 +97,8 @@ function TeamGenerator() {
 
       console.log("---------------------------------------------")
       const response = await axios.post(
-        'https://izqqhm2lde.execute-api.us-east-1.amazonaws.com/dev/user/getusers',
-        { TeamName: TeamName },
+        'https://uouspgj9q5.execute-api.us-east-1.amazonaws.com/dev/getUsers',
+        { teamName: TeamName },
         config // Include the headers in the request configuration
       );
 
