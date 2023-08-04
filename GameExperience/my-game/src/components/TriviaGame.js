@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 import { db } from '../firebase';
-import { ref, onValue, runTransaction, onChildAdded, off } from "firebase/database";
+import { ref, onValue, runTransaction } from "firebase/database";
 import Dashboard from "./TeamLeaderboard";
 import { useParams } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore"; 
-import { database } from "../firebase-scores";
+import { database } from "../firebase"
 
 
 const TriviaGame = () => {
@@ -43,6 +43,8 @@ const TriviaGame = () => {
     // Randomly fetch 20 questions based on category and difficulty
     const handlefetchQuestions = async () => {
         setTimeIsUp(false);
+        setQuestions([]);
+        console.log(timeElapsed);
         try {
             // fetch questions
             // const response = await axios.post ('https://getquestions-5pg2kz6h4q-uc.a.run.app/getQuestions',
@@ -56,6 +58,7 @@ const TriviaGame = () => {
             const questions = newResponse.data;
             // console.log(questions);
             // const questionsRef = ref(db, 'triviaQuestions');
+            console.log(timeElapsed);
             setQuestions(questions);
             // onChildAdded(questionsRef, (snapshot) => {
             //     const questionsData = snapshot.val();
@@ -65,8 +68,8 @@ const TriviaGame = () => {
             setRealTimeScore(0);
             //     }
             // });
-
-
+            
+            console.log(timeElapsed);
             // const questionsData = JSON.parse(response) 
             // setQuestions(questionsData.data.questions);
             // setCurrentQuestionIndex(0);
@@ -96,6 +99,7 @@ const TriviaGame = () => {
 
     // update the timer every second
     const updateTimer = () => {
+        console.log(timeElapsed);
         setTimeLeft((prevTime) => {
             if (prevTime <= 1) {
                 clearInterval(timer.current);
@@ -109,7 +113,8 @@ const TriviaGame = () => {
     };
 
     useEffect(() => {
-        if (questions.length > 0 && currentQuestionIndex < questions.length) {
+        console.log(timeElapsed);
+        if (questions && questions.length > 0 && currentQuestionIndex < questions.length) {
             const timeframeOfNextQuestion = questions[currentQuestionIndex].timeframe;
             startTimer(timeframeOfNextQuestion);
         }
@@ -181,7 +186,7 @@ const TriviaGame = () => {
             });
 
             
-            addData();
+            // addData(realTimeScore);
             
 
         } else {
@@ -205,6 +210,13 @@ const TriviaGame = () => {
         // setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
         // setSelectedOption(null);
     };
+
+    useEffect(() => {
+        const currentQuestion = getCurrentQuestion();
+        if (currentQuestion && currentQuestion.gameId) {
+            addData(realTimeScore);
+        }
+    }, [realTimeScore]);
 
     const handleNextQuestion = () => {
         if (timerRunning) {
@@ -263,15 +275,16 @@ const TriviaGame = () => {
         return questions[currentQuestionIndex];
     };
 
-   const addData = async () => {
+    async function addData(score) {
+        console.log(getCurrentQuestion().gameId);
         try {
-                const docRef = await addDoc(collection(database, "score"), {  
-                    game_id: getCurrentQuestion().gameId,
-                    points: realTimeScore,
-                    team_id: teamName,
-                    user_id: user
-                });
-                console.log("Score document written with ID: ", docRef.id);
+            const docRef = await addDoc(collection(database, "score"), {  
+                game_id: getCurrentQuestion().gameId,
+                points: score,
+                team_id: teamName,
+                user_id: user
+            });
+            console.log("Score document written with ID: ", docRef.id);
         } catch (e) {
             console.error("Error adding score document: ", e);
         }
@@ -353,12 +366,12 @@ const TriviaGame = () => {
                     
 
                     {/* Display the remaining time */}
-     
-                    {timeIsUp ? (
+                    <div className="time-left">Time Left: {timeLeft} seconds</div>
+                    {/* {timeElapsed ? (
                         <div className="time-up">Time's up!</div>
                     ) : (
                         <div className="time-left">Time Left: {timeLeft} seconds</div>
-                    )}
+                    )} */}
 
                     {/* Display the current question */}
                     {currentQuestionIndex < questions.length ? (
