@@ -7,6 +7,7 @@ const SigninSecurityQuestionsPage = () => {
     const navigate = useNavigate();
     const {state} = useLocation();
     const uid = useLocation().state.uid;
+    const email = useLocation().state.email;
 
     // Define the static security questions
     const securityQuestions = [
@@ -74,6 +75,8 @@ const SigninSecurityQuestionsPage = () => {
                 /**
                  * TODO: Navigate to homepage
                  * */
+
+                navigate('/profile', {state: {uid: uid, email: email}});
             }).catch((error) => {
                 window.alert("Validation failed");
                 console.error(error);

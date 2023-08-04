@@ -1,5 +1,6 @@
 const nodemailer = require('nodemailer');
 const { user, pass } = require('./config');
+const {SNS, SQS} = require('./aws-config');
 
 /**
  * @api {post} /user/notification Send notification
@@ -13,7 +14,7 @@ const { user, pass } = require('./config');
  * @returns {json}
  * */
 
-exports.notificationsHandler = async (event, context) => {
+/*exports.notificationsHandler = async (event, context) => {
     try {
         const { to, subject, body } = event;
         console.log(`Sending notification to ${to} with subject ${subject} and body ${body}`);
@@ -68,4 +69,36 @@ exports.notificationsHandler = async (event, context) => {
         };
         return response;
     }
-};
+};*/
+
+
+exports.notificationsHandler = async (event, context) => {
+    const topicArn = 'arn:aws:sns:us-east-1:659069070023:TriviaNotification';
+	const queueUrl = 'https://sqs.us-east-1.amazonaws.com/659069070023/TriviaNotificationQueue';
+
+    for (let record of event.Records) {
+        const body = JSON.parse(record.body);
+        const emails = body.emails;
+
+        const message = `Greetings!\n\n${body.message}`;
+
+        // const message = `${body.itemType}\n\nITEM: ${body.itemName}\nDESCRIPTION: ${body.description}\n\nCONTACT: ${body.userEmail}`;
+
+
+        // Send SNS notification
+        const params = {
+            Message: message,
+            TopicArn: topicArn
+        };
+        await SNS.publish(params).promise();
+
+        // Delete the SQS message after successfully sending the notification
+        const deleteParams = {
+            QueueUrl: queueUrl, // set this environment variable in the AWS Lambda console
+            ReceiptHandle: record.receiptHandle
+        };
+        await SQS.deleteMessage(deleteParams).promise();
+    }
+
+}
+
