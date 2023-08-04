@@ -12,6 +12,7 @@ import FilterQuestions from "./components/FilterQuestions";
 import Navbar from './components/Navbar';
 import LexV2Chatbot from './components/LexChatBot';
 import TeamGenerator from './components/TeamGenerator';
+import TriviaGameLobby from './components/TriviaGameLobby';
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                 <Route path={"/question/list"} element={<FilterQuestions/>}/>
                 <Route path='/bot' element={<LexV2Chatbot />} />
                 <Route path='/teammanagment' element={<TeamGenerator/>} />
+                <Route path='/trivia' element={<TriviaGameLobby/>} />
             </Routes>
         </BrowserRouter>
     );
