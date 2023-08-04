@@ -12,10 +12,14 @@ import FilterQuestions from "./components/FilterQuestions";
 import Navbar from './components/Navbar';
 import LexV2Chatbot from './components/LexChatBot';
 import TeamGenerator from './components/TeamGenerator';
+
+import TriviaGameLobby from './components/TriviaGameLobby';
+
 import ProfilePage from "./components/HP";
 import HomePage from "./components/HomePage";
 import RegistrationPage from "./components/RegistrationPage";
 import EditProfile from "./components/EditProfile";
+
 
 function App() {
     return (
@@ -34,8 +38,12 @@ function App() {
                 <Route path="/question/list" element={<FilterQuestions/>}/>
                 <Route path='/bot' element={<LexV2Chatbot />} />
                 <Route path='/teammanagment' element={<TeamGenerator/>} />
+
+                <Route path='/trivia' element={<TriviaGameLobby/>} />
+
                 <Route path='/CreateProfile' element={<RegistrationPage/>} />
                 <Route path='/EditProfile' element={<EditProfile/>} />
+
             </Routes>
         </BrowserRouter>
     );

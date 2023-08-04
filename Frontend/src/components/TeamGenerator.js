@@ -78,6 +78,7 @@ function TeamGenerator() {
         }
       );
       console.log('User left the team:', response.data);
+      setUsers((prevUsers) => prevUsers.filter((user) => user !== email));
       // After a successful response, you can also update the users state to reflect the changes.
     } catch (error) {
       console.error('Error making user leave:', error);
@@ -149,16 +150,28 @@ function TeamGenerator() {
           {teamStatistics && (
             <div>
               <h2>Team Statistics:</h2>
-              <form>
-                <label>Score:</label>
-                <input type="text" value={teamStatistics.score} disabled />
-                <label>Wins:</label>
-                <input type="text" value={teamStatistics.wins} disabled />
-                <label>Losses:</label>
-                <input type="text" value={teamStatistics.losses} disabled />
-                <label>Games Played:</label>
-                <input type="text" value={teamStatistics.games_played} disabled />
-              </form>
+              <div style={{ marginTop: '20px' }}>
+  
+  <form>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+      <label style={{ width: '100px', marginRight: '10px' }}>Score:</label>
+      <input type="text" value={teamStatistics.score} disabled style={{ width: '150px' }} />
+    </div>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+      <label style={{ width: '100px', marginRight: '10px' }}>Wins:</label>
+      <input type="text" value={teamStatistics.wins} disabled style={{ width: '150px' }} />
+    </div>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+      <label style={{ width: '100px', marginRight: '10px' }}>Losses:</label>
+      <input type="text" value={teamStatistics.losses} disabled style={{ width: '150px' }} />
+    </div>
+    <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+      <label style={{ width: '100px', marginRight: '10px' }}>Games Played:</label>
+      <input type="text" value={teamStatistics.games_played} disabled style={{ width: '150px' }} />
+    </div>
+  </form>
+</div>
+
             </div>
           )}
           <button onClick={viewTeamStats}>View Team Statistics</button>
