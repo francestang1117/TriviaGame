@@ -6,7 +6,9 @@ AWS.config.update({
     secretAccessKey: 'FEzGpOyz93oT7tRC/nw9bvETqU6CvM3vCA8vJoA2',
 });
 
-const SQS = new AWS.SQS();
-const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-module.exports = {dynamodb, SQS};
+const dynamodb = new AWS.DynamoDB.DocumentClient();
+const SNS = new AWS.SNS();
+
+
+module.exports = {dynamodb, SNS};

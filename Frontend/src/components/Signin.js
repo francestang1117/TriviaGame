@@ -34,12 +34,18 @@ function Signin() {
                 password: password
             })
             .then((response) => {
-                console.log(response.data);
-                navigate('/signin/security-questions', {state: {uid: response.data.userId}});
+                window.alert('Sign in successful!');
+                console.log(response);
+                if(response.status === 200) {
+                    console.log(response.data);
+                    navigate('/signin/security-questions', {state: {uid: response.data.userId, email: email}});
+                } else {
+                    throw new Error(response.data.body.errorCode);
+                }
 
             })
             .catch((error) => {
-                window.alert(error);
+                window.alert('Error signing in! ');
             })
 
         // Reset the form

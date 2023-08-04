@@ -1,4 +1,4 @@
-const dynamodb = require('./aws-config');
+const {dynamodb, SQS} = require('./aws-config');
 
 /**
  * required params:
@@ -14,6 +14,8 @@ const dynamodb = require('./aws-config');
 
 exports.gameHandler = async (event) => {
     try {
+
+        const queueUrl = 'https://sqs.us-east-1.amazonaws.com/659069070023/TriviaNotificationQueue';
         const {
             gameName,
             gameDescription,
@@ -36,6 +38,19 @@ exports.gameHandler = async (event) => {
             },
         };
         console.log(params.Item);
+
+        const message = `${gameName} has been created!`;
+
+        const data = JSON.stringify({message: message});
+        console.log(data);
+        // Send message to SQS
+        const sendMessageParams = {
+            MessageBody: data,
+            QueueUrl: queueUrl,
+        }
+
+        await SQS.sendMessage(sendMessageParams).promise();
+
 
         const result = await dynamodb.put(params).promise();
         console.log(result);
