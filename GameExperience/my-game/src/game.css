@@ -1,4 +1,4 @@
-.trivia-game-container {
+/* .trivia-game-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
@@ -96,5 +96,52 @@ form button {
 .trivia-game-content .explanation {
     font-size: 16px;
     margin-bottom: 20px;
+}
+ */
+ .trivia-game-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #F5F5F5;
+}
+
+form {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px 0;
+    background-color: #008CBA; 
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.trivia-game-content {
+    padding: 20px;
+    background-color: #FFFFFF;
+}
+
+.score, .time-left {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
 }
 

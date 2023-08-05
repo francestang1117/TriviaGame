@@ -1,5 +1,5 @@
+import { getFirestore } from "firebase/firestore";
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -9,7 +9,6 @@ import { getDatabase } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyBbPoVqjk45k9dUuwR-wqA9Vn0MOw091co",
   authDomain: "csci-5410-s23-sdp1.firebaseapp.com",
-  databaseURL: "https://csci-5410-s23-sdp1-default-rtdb.firebaseio.com",
   projectId: "csci-5410-s23-sdp1",
   storageBucket: "csci-5410-s23-sdp1.appspot.com",
   messagingSenderId: "1042986359769",
@@ -19,7 +18,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
+const db = getFirestore(app);
 
 export { db }
  

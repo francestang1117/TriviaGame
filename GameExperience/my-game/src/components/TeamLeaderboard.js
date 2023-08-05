@@ -1,34 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../firebase";
-import { ref, onValue} from "firebase/database";
+import { collection, onSnapshot } from 'firebase/firestore'
 
 const TeamLeaderboard = () => {
   const [teams, setTeams] = useState([]);
 
   useEffect(() => {
-    // Create a reference to the "teams" data in the database
-    const teamsRef = ref(db, "teams");
-
-    // Listen for changes to the "teams" data
-    const unsubscribe = onValue(teamsRef, (snapshot) => {
-      const teamsData = snapshot.val();
-      if (teamsData) {
-        // Convert the object of teams into an array
-        const teamsArray = Object.entries(teamsData).map(([teamName, teamData]) => ({
-          name: teamName,
+    // Create a reference 
+    const teamsRef = collection(db, "teams");
+  
+    // Listen 
+    const unsubscribe = onSnapshot(teamsRef, (querySnapshot) => {
+      const teamsArray = [];
+  
+      querySnapshot.forEach((doc) => {
+        const teamData = doc.data();
+        teamsArray.push({
+          name: doc.id, 
           score: teamData.score,
-        }));
-        // Sort teams by score in descending order
-        const sortedTeams = teamsArray.sort((a, b) => b.score - a.score);
-        setTeams(sortedTeams);
-      }
+          categoryScores: teamData.categoryScores, 
+        });
+      });
+  
+      // Sort teams by score in descending order
+      const sortedTeams = teamsArray.sort((a, b) => b.score - a.score);
+  
+      setTeams(sortedTeams);
     });
-
-    // Clean up the listener when the component unmounts
+  
+    // Clean up the listener 
     return () => {
-      unsubscribe(); // This will remove the listener
+      unsubscribe(); 
     };
-  }, []); // Pass an empty dependency array to run this effect only once
+  }, []);
+  
 
   return (
     <div className="team-leaderboard">
@@ -56,60 +61,3 @@ const TeamLeaderboard = () => {
 };
 
 export default TeamLeaderboard;
-
-
-
-
-
-
-// import React, { useState, useEffect } from "react";
-// import { db } from '../firebase';
-// import { ref, onValue, runTransaction } from "firebase/database";
-
-// const Dashboard = () => {
-//     const [teams, setTeams] = useState([]);
-
-//     useEffect(() => {
-//         // Fetch team data from the database
-//         const teamsRef = ref(db, "teams");
-//         onValue(teamsRef, (snapshot) => {
-//           const teamsData = snapshot.val();
-//           if (teamsData) {
-//             // Convert the object of teams into an array
-//             const teamsArray = Object.entries(teamsData).map(([teamName, teamData]) => ({
-//                 name: teamName,
-//                 members: teamData.members,
-//                 score: teamData.score,
-//             }));
-//             setTeams(teamsArray);
-//           }
-//         });
-//     }, []);
-
-//     return (
-//         <div className="dashboard-container">
-//           <h1>Team Scores</h1>
-//           <table>
-//             <thead>
-//               <tr>
-//                 <th>Team Name</th>
-//                 <th>Team Members</th>
-//                 <th>Team Score</th>
-//               </tr>
-//             </thead>
-//             <tbody>
-//               {teams.map((team) => (
-//                 <tr key={team.name}>
-//                   <td>{team.name}</td>
-//                   <td>{team.members.join(", ")}</td>
-//                   <td>{team.score}</td>
-//                 </tr>
-//               ))}
-//             </tbody>
-//           </table>
-//         </div>
-//     );
-// };
-    
-// export default Dashboard;
-

@@ -9,120 +9,196 @@
 
 import { onRequest } from "firebase-functions/v2/https";
 // import { db } from './config';
-import axios from "axios";
 import cors from 'cors';
+import { collection, query, orderBy, where, getDocs } from 'firebase/firestore';
 // import { ref, push } from 'firebase/database';
 
 import admin from "firebase-admin";
 admin.initializeApp();
+const db = admin.firestore();
 // Enable CORS
 const corsHandler = cors({ origin: true });
 
-export const getQuestions = onRequest( async(req, res) => {
+// export const getQuestions = onRequest(async (req, res) => {
+//     corsHandler(req, res, async () => {
+//         try {
+//             const { category, difficulty } = req.body;
+//             const data = {
+//                 category: category,
+//                 difficulty: difficulty
+//             }
+//             const apiUrl = 'https://izqqhm2lde.execute-api.us-east-1.amazonaws.com/dev/question';
+//             const response = await axios.post(apiUrl, data);
+//             const fetchQuestions = JSON.parse(response.data.body).data;
+
+//             // Store the questions into the firebase real time database
+//             // const questionsRef = ref(db, 'triviaQuestions');
+//             const questionsRef = admin.database().ref('triviaQuestions');
+//             fetchQuestions.forEach((question) => {
+//                 const childRef = questionsRef.push();
+//                 childRef.set(question);
+//             });
+
+//             res.status(200).json({ status: 200, message: 'Trivia questions fetched and stored successfully.' });
+//         } catch (error) {
+//             console.error('Fetching and storing questions failed with error ', error);
+//             res.status(500).json({ status: 500, error: error.message });
+//         }
+//     })
+// });
+
+
+export const getGlobalLeaderboard = onRequest(async (req, res) => {
     corsHandler(req, res, async () => {
+
+        let limit = req.query.limit ? parseInt(req.query.limit) : 10;
+
+        const timeFrame = req.query.timeFrame || 'allTime';
+
+        let startTime;
+
+        switch (timeFrame) {
+            case 'daily':
+                startTime = new Date();
+                startTime.setHours(0, 0, 0, 0);
+                break;
+            case 'weekly':
+                startTime = new Date();
+                startTime.setDate(startTime.getDate() - 7);
+                break;
+            case 'monthly':
+                startTime = new Date();
+                startTime.setMonth(startTime.getMonth() - 1);
+                break;
+            default: // all time
+                startTime = new Date(0);
+        }
+
         try {
-            const {category, difficulty} = req.body;
-            const data = {
-                category: category,
-                difficulty: difficulty
-            }
-            const apiUrl = 'https://izqqhm2lde.execute-api.us-east-1.amazonaws.com/dev/question';
-            const response = await axios.post(apiUrl, data);
-            const fetchQuestions = JSON.parse(response.data.body).data;
+            
+            const userQuery = query(
+                db.collection('users'),
+                where('timestamp', '>=', startTime),
+                orderBy('score', 'desc')
+            );
 
-            // Store the questions into the firebase real time database
-            // const questionsRef = ref(db, 'triviaQuestions');
-            const questionsRef = admin.database().ref('triviaQuestions');
-            fetchQuestions.forEach((question) => {
-                const childRef = questionsRef.push();
-                childRef.set(question);
-            });
+            
+            const teamQuery = query(
+                db.collection('teams'),
+                where('timestamp', '>=', startTime),
+                orderBy('score', 'desc')
+            );
 
-            res.status(200).json({status: 200, message: 'Trivia questions fetched and stored successfully.'});
-        }catch (error) {
-            console.error('Fetching and storing questions failed with error ', error);
-            res.status(500).json({status: 500, error: error.message});
+
+            const [userSnapshot, teamSnapshot] = await Promise.all([
+                getDocs(userQuery),
+                getDocs(teamQuery)
+            ]);
+
+            const userLeaderboard = userSnapshot.docs.map((doc) => ({
+                name: doc.id,
+                score: doc.data().score
+            })).slice(0, limit);
+
+            const teamLeaderboard = teamSnapshot.docs.map((doc) => ({
+                name: doc.id,
+                score: doc.data().score
+            })).slice(0, limit);
+
+            res.status(200).send({ userLeaderboard, teamLeaderboard });
+        } catch (error) {
+            console.error('Error fetching global leaderboard:', error);
+            res.status(500).send({ message: 'Error fetching global leaderboard' });
         }
     })
 });
 
-// exports.createGameRoom = onRequest(async(req, res) => {
+export const getCategoryLeaderboard = onRequest(async (req, res) => {
+    corsHandler(req, res, async () => {
 
-//     try {
-//         const roomId = generateUniqueRoomId();
+        const category = req.query.category;
 
-//         // Create a new game room entry in the Firebase Realtime Database
-//         await admin.database().ref("gameRooms").child(roomId).set({
-//             teams: {},
-//         // Add other game room data as needed
-//         });
+        let limit = req.query.limit ? parseInt(req.query.limit) : 10;
 
-//         res.status(201).json({ roomId });
-//     } catch (error) {
-//         console.error("Error creating game room:", error);
-//         res.status(500).json({ error: "Failed to create game room" });
-//     }
-    
-// });
+        if (!category) {
+            res.status(400).send({ error: 'No category provided' });
+            return;
+        }
 
-// function generateUniqueRoomId() {
-//     const length = 6;
-//     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-//     let roomId = "";
-  
-//     for (let i = 0; i < length; i++) {
-//       const randomIndex = Math.floor(Math.random() * characters.length);
-//       roomId += characters.charAt(randomIndex);
-//     }
-  
-//     return roomId;
-// }
-  
+        const timeFrame = req.query.timeFrame || 'allTime';
 
-// exports.joinGameRoom = onRequest(async(req, res) => {
-//     try {
-//         const { roomId, teamId } = req.body;
-    
-//         // Check if the game room exists in the Firebase Realtime Database
-//         const roomSnapshot = await admin.database().ref("gameRooms").child(roomId).once("value");
-//         const roomData = roomSnapshot.val();
-    
-//         if (!roomData) {
-//           return res.status(404).json({ error: "Game room not found" });
-//         }
-    
-//         // Check if the team exists in the game room
-//         if (!roomData.teams || !roomData.teams[teamId]) {
-//           return res.status(404).json({ error: "Team not found" });
-//         }
+        let startTime;
 
-//         // Check if there is space for the player in the team (you can enforce team capacity here)
-//         if (Object.keys(roomData.teams[teamId].players).length >= 4) {
-//             return res.status(400).json({ error: "Team is full" });
-//         }
-  
-//         // Add the player to the team
-//         const playerId = generateUniquePlayerId();
-//         const player = { id: playerId, name: "Player" }; // Replace with player data as needed
-//         await admin.database().ref("gameRooms").child(roomId).child("teams").child(teamId).child("players").child(playerId).set(player);
-  
-//         res.status(200).json({ message: "Player joined team successfully" });
-//     } catch (error) {
-//         console.error("Error joining team:", error);
-//         res.status(500).json({ error: "Failed to join team" });
-//     }
-// });
+        switch (timeFrame) {
+            case 'daily':
+                startTime = new Date();
+                startTime.setHours(0, 0, 0, 0);
+                break;
+            case 'weekly':
+                startTime = new Date();
+                startTime.setDate(startTime.getDate() - 7);
+                break;
+            case 'monthly':
+                startTime = new Date();
+                startTime.setMonth(startTime.getMonth() - 1);
+                break;
+            default: // all time
+                startTime = new Date(0);
+        }
 
-// function generateUniquePlayerId() {
-//     const length = 8;
-//     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-//     let playerId = "";
-  
-//     for (let i = 0; i < length; i++) {
-//       const randomIndex = Math.floor(Math.random() * characters.length);
-//       playerId += characters.charAt(randomIndex);
-//     }
-  
-//     return playerId;
-// }
-  
+        switch (timeFrame) {
+            case 'daily':
+                startTime = new Date(currentTime.setHours(0, 0, 0, 0));
+                break;
+            case 'weekly':
+                startTime = new Date(currentTime.setDate(currentTime.getDate() - 7));
+                break;
+            case 'monthly':
+                startTime = new Date(currentTime.setMonth(currentTime.getMonth() - 1));
+                break;
+            default: // all time
+                startTime = 0;
+        }
+
+        try {
+
+            const userQuery = query(
+                db.collection('users'),
+                where('timestamp', '>=', startTime),
+                orderBy(`categoryScores.${category}`, 'desc')
+            );
+            console.log(userQuery); 
+
+            
+            const teamQuery = query(
+                db.collection('teams'),
+                where('timestamp', '>=', startTime),
+                orderBy(`categoryScores.${category}`, 'desc')
+            );
+            console.log(teamQuery); 
+
+            const [userSnapshot, teamSnapshot] = await Promise.all([
+                getDocs(userQuery),
+                getDocs(teamQuery)
+            ]);
+
+            const userLeaderboard = userSnapshot.docs.map((doc) => ({
+                name: doc.id,
+                score: doc.data().score
+            })).slice(0, limit);
+
+            const teamLeaderboard = teamSnapshot.docs.map((doc) => ({
+                name: doc.id,
+                score: doc.data().score
+            })).slice(0, limit);
+
+            res.status(200).send({ userLeaderboard, teamLeaderboard });
+
+        } catch (error) {
+            console.error('Error fetching category leaderboard:', error);
+            res.status(500).send({ message: 'Error fetching category leaderboard' });
+        }
+
+    });
+});
+
