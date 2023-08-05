@@ -1,0 +1,78 @@
+.playerboard-container {
+    width: 60%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.playerboard-title {
+    text-align: center;
+    color: #333;
+}
+
+.playerboard-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.playerboard-item:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.rank,
+.user,
+.score {
+    margin: 5px 0;
+}
+
+.rank {
+    color: #555;
+}
+
+.user {
+    color: #777;
+}
+
+.score {
+    color: #999;
+}
+
+
+.team-leaderboard {
+    width: 70%;
+    margin: 20px auto;
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+}
+
+.team-leaderboard h2 {
+    text-align: center;
+    color: #444;
+}
+
+.team-leaderboard table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+}
+
+.team-leaderboard th,
+.team-leaderboard td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.team-leaderboard thead {
+    background-color: #f3f3f3;
+}
+
+.team-leaderboard tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.team-leaderboard th {
+    color: #555;
+    font-weight: bold;
+}
