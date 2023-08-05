@@ -27,7 +27,6 @@ const TriviaGame = () => {
     const [timeElapsed, setTimeElapsed] = useState(false);
     const [timeIsUp, setTimeIsUp] = useState(false);
     const [teamScore, setTeamScore] = useState(null);
-    const [showDashboard, setShowDashboard] = useState(false);
     const [message, setMessage] = useState(null);
     const [showTeamDashboard, setShowTeamDashboard] = useState(false);
     const [showPlayerDashboard, setShowPlayerDashboard] = useState(false);
@@ -188,7 +187,7 @@ const TriviaGame = () => {
                                 categoryScores: {
                                     [category]: 1
                                 },
-                                timeStamp: serverTimestamp()
+                                timestamp: serverTimestamp()
                             });
                         } else {
                             // Otherwise, increment the score and categoryScores[category] by 1.
@@ -200,7 +199,7 @@ const TriviaGame = () => {
                             transaction.update(scoreRef, {
                                 score: newScore,
                                 categoryScores: categoryScores,
-                                timeStamp: serverTimestamp()
+                                timestamp: serverTimestamp()
                             });
                         }
 
@@ -209,60 +208,6 @@ const TriviaGame = () => {
                 } catch (e) {
                     console.error('Transaction failed: ', e);
                 }
-
-                // runTransaction(scoreRef, (currentScore) => {
-                //     // Increment the score by 1
-                //     // return (currentScore || 0) + 1;
-                //     if (currentScore == null) {
-                //         return {
-                //             score: 1,
-                //             categoryScores: {
-                //                 [category]: 1
-                //             },
-                //             timeStamp: serverTimestamp()
-                //         };
-                //     }else {
-                //         let newScore = (currentScore.score || 0) + 1;
-                //         let categoryScores = currentScore.categoryScores || {};
-                //         categoryScores[category] = (categoryScores[category] || 0) + 1;
-
-                //         return {
-                //             score: newScore,
-                //             categoryScores: categoryScores,
-                //             timeStamp: serverTimestamp()
-                //         };
-                //     }
-
-                // }).catch((error) => {
-                //     console.error('Transcation failed: ', error);
-                // });
-
-                // Update the team's score in real-time database
-                // const teamScoreRef = ref(db, `teams/${teamName}`);
-                // runTransaction(teamScoreRef, (currentScore) => {
-                //     // Increment the team's score by 1
-                //     // return (currentScore || 0) + 1;
-                //     if (currentScore == null) {
-                //         return {
-                //             score: 1,
-                //             categoryScores: {
-                //                 [category]: 1
-                //             },
-                //             timeStamp: serverTimestamp()
-                //         };
-                //     } else {
-                //         let newScore = (currentScore.score || 0) + 1;
-                //         let categoryScores = currentScore.categoryScores || {};
-                //         categoryScores[category] = (categoryScores[category] || 0) + 1;
-                //         return {
-                //             score: newScore,
-                //             categoryScores: categoryScores,
-                //             timeStamp: serverTimestamp()
-                //         };
-                //     }
-                // }).catch((error) => {
-                //     console.error("Transaction failed: ", error);
-                // });
             }
 
             // update team score
@@ -280,7 +225,7 @@ const TriviaGame = () => {
                                 categoryScores: {
                                     [category]: 1
                                 },
-                                timeStamp: serverTimestamp()
+                                timestamp: serverTimestamp()
                             });
                         } else {
                             // Otherwise, increment the score and categoryScores[category] by 1.
@@ -292,7 +237,7 @@ const TriviaGame = () => {
                             transaction.update(teamScoreRef, {
                                 score: newScore,
                                 categoryScores: categoryScores,
-                                timeStamp: serverTimestamp()
+                                timestamp: serverTimestamp()
                             });
                         }
                     });
@@ -488,13 +433,7 @@ const TriviaGame = () => {
                 <p>Loading questions...</p>
             ) : (
                 <div className="trivia-game-content">
-                    {/* Display the real-time score */}
-                    {user && realTimeScore && (
-                        <div>
-                            <h3>User: {user}</h3>
-                            <p className="score">Score: {realTimeScore.score}</p>
-                        </div>
-                    )}
+                    
                     {teamName && teamScore && (
                         <div>
                             <h3>Team: {teamName}</h3>
@@ -513,7 +452,15 @@ const TriviaGame = () => {
 
                     {/* Display the current question */}
                     {currentQuestionIndex < questions.length ? (
+                        
                         <div>
+                            {/* Display the real-time score */}
+                            {user && realTimeScore && (
+                                <div>
+                                 <h3>User: {user}</h3>
+                                    <p className="score">Score: {realTimeScore.score}</p>
+                                </div>
+                            )}
                             <h2>Question {currentQuestionIndex + 1}</h2>
                             <p>{getCurrentQuestion().question}</p>
 

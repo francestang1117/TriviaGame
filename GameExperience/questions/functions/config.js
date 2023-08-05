@@ -9,6 +9,7 @@ import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: "AIzaSyBbPoVqjk45k9dUuwR-wqA9Vn0MOw091co",
   authDomain: "csci-5410-s23-sdp1.firebaseapp.com",
+  databaseURL: "https://csci-5410-s23-sdp1-default-rtdb.firebaseio.com",
   projectId: "csci-5410-s23-sdp1",
   storageBucket: "csci-5410-s23-sdp1.appspot.com",
   messagingSenderId: "1042986359769",

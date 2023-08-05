@@ -10,12 +10,9 @@
 import { onRequest } from "firebase-functions/v2/https";
 // import { db } from './config';
 import cors from 'cors';
-import { collection, query, orderBy, where, getDocs } from 'firebase/firestore';
 // import { ref, push } from 'firebase/database';
-
 import admin from "firebase-admin";
 admin.initializeApp();
-const db = admin.firestore();
 // Enable CORS
 const corsHandler = cors({ origin: true });
 
@@ -76,23 +73,24 @@ export const getGlobalLeaderboard = onRequest(async (req, res) => {
 
         try {
             
-            const userQuery = query(
-                db.collection('users'),
-                where('timestamp', '>=', startTime),
-                orderBy('score', 'desc')
-            );
+            const userQuery = admin.firestore()
+                .collection('users')
+                .where('timestamp', '>=', startTime)
+                .orderBy('timestamp')
+                .orderBy('score', 'desc')
 
             
-            const teamQuery = query(
-                db.collection('teams'),
-                where('timestamp', '>=', startTime),
-                orderBy('score', 'desc')
-            );
+            const teamQuery = admin.firestore()
+                .collection('teams')
+                .where('timestamp', '>=', startTime)
+                .orderBy('timestamp')
+                .orderBy('score', 'desc')
+            
 
 
             const [userSnapshot, teamSnapshot] = await Promise.all([
-                getDocs(userQuery),
-                getDocs(teamQuery)
+                userQuery.get(),
+                teamQuery.get()
             ]);
 
             const userLeaderboard = userSnapshot.docs.map((doc) => ({
@@ -146,40 +144,33 @@ export const getCategoryLeaderboard = onRequest(async (req, res) => {
                 startTime = new Date(0);
         }
 
-        switch (timeFrame) {
-            case 'daily':
-                startTime = new Date(currentTime.setHours(0, 0, 0, 0));
-                break;
-            case 'weekly':
-                startTime = new Date(currentTime.setDate(currentTime.getDate() - 7));
-                break;
-            case 'monthly':
-                startTime = new Date(currentTime.setMonth(currentTime.getMonth() - 1));
-                break;
-            default: // all time
-                startTime = 0;
-        }
-
         try {
 
-            const userQuery = query(
-                db.collection('users'),
-                where('timestamp', '>=', startTime),
-                orderBy(`categoryScores.${category}`, 'desc')
-            );
+            const userQuery =  admin.firestore()
+                .collection('users')
+                .doc('')
+                .collection('categoryScores')
+                .where('timestamp', '>=', startTime)
+                .orderBy('timestamp')
+                .orderBy(`categoryScores.${category}`, 'desc')
+                .limit(limit)
+        
             console.log(userQuery); 
 
             
-            const teamQuery = query(
-                db.collection('teams'),
-                where('timestamp', '>=', startTime),
-                orderBy(`categoryScores.${category}`, 'desc')
-            );
+            const teamQuery = admin.firestore()
+                .collection('teams')
+                .collection('categoryScores')
+                .where('timestamp', '>=', startTime)
+                .orderBy('timestamp')
+                .orderBy(`categoryScores.${category}`, 'desc')
+                .limit(limit)
+        
             console.log(teamQuery); 
 
             const [userSnapshot, teamSnapshot] = await Promise.all([
-                getDocs(userQuery),
-                getDocs(teamQuery)
+                userQuery.get(),
+                teamQuery.get()
             ]);
 
             const userLeaderboard = userSnapshot.docs.map((doc) => ({
