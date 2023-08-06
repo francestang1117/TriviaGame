@@ -60,7 +60,7 @@ const TriviaGameLobby = () => {
             <p>Number of Participants: {game.numberOfParticipants}</p>
             <p>Time Remaining: {game.timeRemaining}</p>
             {/* Render other game details as needed */}
-            <button onClick={() => handleJoinLobby(game.id)}>Join Lobby</button>
+            {/*<button onClick={() => handleJoinLobby(game.id)}>Join Lobby</button>*/}
           </div>
         ))
       ) : (

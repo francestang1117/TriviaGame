@@ -38,6 +38,7 @@ function Signin() {
                 console.log(response);
                 if(response.status === 200) {
                     console.log(response.data);
+                    localStorage.setItem('username', email);
                     navigate('/signin/security-questions', {state: {uid: response.data.userId, email: email}});
                 } else {
                     throw new Error(response.data.body.errorCode);
